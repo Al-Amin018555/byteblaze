@@ -1,19 +1,24 @@
 import { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 
 const Nav = () => {
     const [theme, setTheme] = useState('light');
+    // const [theme, setTheme] = useState(() => {
+    //     return localStorage.getItem('theme') || 'light';
+    // });
 
     //getting theme data form local storage and setting it to html tag attribute and re-render(by the dependency) every time while theme value is changed
     useEffect(() => {
         localStorage.setItem('theme', theme);
         const localTheme = localStorage.getItem('theme');
         document.querySelector('html').setAttribute('data-theme', localTheme);
+        // document.querySelector('html').setAttribute('data-theme', theme);
     }, [theme])
 
     //checking whether we had toggled or not
     const handleToggle = e => {
         if (e.target.checked) {
-            setTheme('dark')
+            setTheme('synthwave')
         }
         else {
             setTheme('light')
@@ -29,21 +34,24 @@ const Nav = () => {
                     <ul
                         tabIndex={0}
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-                        <li><a>Home</a></li>
-                        <li><a>Blogs</a></li>
-                        <li><a>Bookmarks</a></li>
+                        <NavLink to='/' className={({ isActive }) => isActive ? 'text-primary font-bold' : 'font-bold'
+                        }>Home</NavLink>
+                        <NavLink to='/blogs' className={({ isActive }) => isActive ? 'text-primary font-bold' : 'font-bold'}>Blogs</NavLink>
+                        <NavLink to="/bookmarks" className={({ isActive }) => isActive ? 'text-primary font-bold' : 'font-bold'}>Bookmarks</NavLink>
                     </ul>
                 </div>
                 <a className="btn btn-ghost gap-0 text-secondary normal-case text-2xl">Byte<span className="text-primary">Blaze</span></a>
             </div>
-            <div className="navbar-end hidden lg:flex">
-                <ul className="menu menu-horizontal px-1">
-                    <li className="font-bold"><a>Home</a></li>
-                    <li className="font-bold"><a>Blogs</a></li>
-                    <li className="font-bold"><a>Bookmarks</a></li>
+
+            <div className="navbar-end hidden lg:flex gap-4">
+                <ul className="menu menu-horizontal flex gap-4 px-1">
+                    <NavLink to='/' className={({ isActive }) => isActive ? 'text-primary font-bold' : 'font-bold'
+                    }>Home</NavLink>
+                    <NavLink to='/blogs' className={({ isActive }) => isActive ? 'text-primary font-bold' : 'font-bold'}>Blogs</NavLink>
+                    <NavLink to="/bookmarks" className={({ isActive }) => isActive ? 'text-primary font-bold' : 'font-bold'}>Bookmarks</NavLink>
                 </ul>
                 {/* <input onChange={handleToggle} type="checkbox" className="toggle theme-controller" /> */}
-                
+
                 <label className="toggle text-base-content">
                     <input type="checkbox" onChange={handleToggle} className="theme-controller" />
 
@@ -54,7 +62,7 @@ const Nav = () => {
                 </label>
             </div>
 
-        </div>
+        </div >
     );
 };
 

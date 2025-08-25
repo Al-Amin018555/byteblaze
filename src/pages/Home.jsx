@@ -2,11 +2,7 @@ import Nav from "../components/Nav";
 
 const Home = () => {
     return (
-        <div>
-            <div className="h-16">
-                <Nav></Nav>
-            </div>
-            
+        <div>   
             <h1>HomePage</h1>
         </div>
     );
