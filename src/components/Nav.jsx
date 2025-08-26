@@ -40,7 +40,7 @@ const Nav = () => {
                         <NavLink to="/bookmarks" className={({ isActive }) => isActive ? 'text-primary font-bold' : 'font-bold'}>Bookmarks</NavLink>
                     </ul>
                 </div>
-                <a className="btn btn-ghost gap-0 text-secondary normal-case text-2xl">Byte<span className="text-primary">Blaze</span></a>
+                <NavLink to='/' className="btn btn-ghost gap-0 text-secondary normal-case text-2xl">Byte<span className="text-primary">Blaze</span></NavLink>
             </div>
 
             <div className="navbar-end hidden lg:flex gap-4">
