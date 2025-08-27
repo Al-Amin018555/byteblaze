@@ -13,8 +13,7 @@ const Blogs = () => {
     // },[])
     // console.log(blogs);
   
-    const blogs = useLoaderData();
-    console.log(blogs)
+    const blogs = useLoaderData(); // one line for fetching data while entering the blogs route instead of useEffect which takes multiple line codes
     return (
         <section className="dark:bg-gray-100 py-6 dark:text-gray-800">
             <div className="container max-w-6xl p-6 mx-auto space-y-6 sm:space-y-12">
