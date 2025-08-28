@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, Outlet, useLoaderData } from "react-router-dom";
+import { MdBookmarkAdd } from "react-icons/md";
 
 const Blog = () => {
     const [tabIndex, setTabIndex] = useState(0);
@@ -8,6 +9,10 @@ const Blog = () => {
         comments_count,
         public_reactions_count,
         reading_time_minutes } = blog;
+        
+    const handleBookmark = blog => {
+        console.log(blog);
+    }
     return (
         <div className="max-w-4xl px-6 py-16 mx-auto space-y-12">
             <article className="space-y-8 dark:bg-gray-100 dark:text-gray-900">
@@ -37,6 +42,10 @@ const Blog = () => {
                         <span>Author</span>
                     </Link>
 
+                    <div onClick={() => handleBookmark(blog)} className="ml-5 p-3 cursor-pointer hover:scale-105 bg-violet-300/50 hover:bg-violet-400/70 rounded-full">
+                        <MdBookmarkAdd size={20} className="text-primary" />
+
+                    </div>
                 </div>
                 <Outlet></Outlet>
             </article>
