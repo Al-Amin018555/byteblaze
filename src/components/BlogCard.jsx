@@ -17,7 +17,7 @@ const BlogCard = ({ blog, deletable, handleDelete }) => {
             </Link>
 
             {deletable && (
-                <div onClick={() => handleDelete(id)} className="absolute -top-5 -right-5 scale-105 p-3 rounded-full bg-primary hover:bg-secondary group cursor-pointer">
+                <div onClick={() => handleDelete(id)} className="absolute -top-5 -right-0 lg:-top-5 lg:-right-5 scale-105 p-3 rounded-full bg-primary hover:bg-secondary group cursor-pointer">
                     <MdDeleteOutline size={20} className="text-secondary group-hover:text-primary" ></MdDeleteOutline>
                 </div>)}
 
