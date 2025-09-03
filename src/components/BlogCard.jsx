@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom";
-import placeholderImage from '../assets/404.jpg'
+import placeholderImage from '../assets/404.jpg';
+import { MdDeleteOutline } from "react-icons/md";
 
-const BlogCard = ({blog}) => {
-    const {cover_image,title,description,published_at,id} = blog;
+const BlogCard = ({ blog, deletable, handleDelete }) => {
+    const { cover_image, title, description, published_at, id } = blog;
+    
     return (
-        
-            <Link to={`/blogs/${id}`} className="max-w-sm mx-auto outline-2 transition hover:scale-105 outline-blue-500/50 hover:outline-secondary  group hover:no-underline focus:no-underline dark:bg-gray-50">
+        <div className="relative flex">
+            <Link to={`/blogs/${id}`} className="max-w-sm mx-auto outline-2 transition hover:scale-105 outline-blue-500/50 hover:outline-secondary group hover:no-underline focus:no-underline dark:bg-gray-50">
                 <img role="presentation" className="object-cover w-full rounded h-44 dark:bg-gray-500" src={cover_image || placeholderImage} />
                 <div className="p-6 space-y-2">
                     <h3 className="text-2xl font-semibold group-hover:underline group-focus:underline">{title}</h3>
@@ -13,7 +15,15 @@ const BlogCard = ({blog}) => {
                     <p>{description}</p>
                 </div>
             </Link>
-       
+
+            {deletable && (
+                <div onClick={() => handleDelete(id)} className="absolute -top-5 -right-5 scale-105 p-3 rounded-full bg-primary hover:bg-secondary group cursor-pointer">
+                    <MdDeleteOutline size={20} className="text-secondary group-hover:text-primary" ></MdDeleteOutline>
+                </div>)}
+
+        </div>
+
+
     );
 };
 
